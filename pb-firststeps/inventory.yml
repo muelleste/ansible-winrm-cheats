@@ -1,0 +1,14 @@
+all:
+  hosts:
+
+  children:
+    win:
+      hosts:
+        <Server-Alias>:
+          ansible_host: <FQDN>OR<IPADDRESS>
+      vars:
+        ansible_user: <Username>
+        ansible_password: <Password>
+        ansible_connection: winrm
+        ansible_winrm_transport: kerberos
+        ansible_port: 5985

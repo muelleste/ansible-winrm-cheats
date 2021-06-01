@@ -1,0 +1,10 @@
+---
+- hosts: win
+  gather_facts: yes
+  tasks:
+    
+  - name: Free space on C
+    win_shell: Get-PSDrive -Name C | Select-Object Name, @{N="FreeSpaceInGB";E={[Math]::Round($_.Free / 1GB)}} | ConvertTo-Json
+    args:
+      no_profile: yes
+    register: space
